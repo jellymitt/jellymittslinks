@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StripesHub - Mod Central</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #141414, #261c33);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #9d4edd;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(157, 78, 221, 0.5);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #b3b3b3;
+            margin-bottom: 30px;
+        }
+
+        .gate-box {
+            background: rgba(157, 78, 221, 0.1);
+            border: 1px dashed #9d4edd;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .gate-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #e0aaff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-yt {
+            background: #ff0000;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .btn-yt:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+
+        .btn-verify {
+            background: #3a0ca3;
+            color: #ffffff;
+        }
+
+        .btn-verify:hover {
+            background: #4cc9f0;
+            color: #000000;
+        }
+
+        .links-section {
+            display: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-download {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-download:hover {
+            background: #9d4edd;
+            border-color: #9d4edd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(157, 78, 221, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Change the image URL below to your own avatar if you want -->
+        <img class="profile-pic" src="https://github.com" alt="Profile Picture">
+        
+        <h1>StripesHub</h1>
+        <p class="subtitle">Click below to unlock download links and tools</p>
+
+        <!-- Verification Lock Box -->
+        <div class="gate-box" id="gateBox">
+            <p class="gate-title">⚠️ Attention Required</p>
+            <p style="font-size: 13px; color: #cccccc; margin-bottom: 15px;">
+                Please subscribe to the channel before continuing to the downloads.
+            </p>
+            
+            <!-- STEP 1: Replace URL with your YouTube Channel -->
+            <a href="https://youtube.com" target="_blank" class="btn btn-yt" id="subscribeBtn">
+                1. Subscribe on YouTube
+            </a>
+
+            <button class="btn btn-verify" id="verifyBtn">
+                2. Check Verification Status
+            </button>
+        </div>
+
+        <!-- Hidden Downloads Section -->
+        <div class="links-section" id="linksSection">
+            <h3 style="margin-bottom: 15px; font-size: 16px; color: #e0aaff;">Available Downloads</h3>
+            
+            <!-- STEP 2: Replace these href links and text with your actual mod downloads -->
+            <a href="YOUR_FRIDA_TOOL_LINK" target="_blank" class="btn btn-download">Frida Tools (Required)</a>
+            <a href="YOUR_CYBER_EXE_LINK" target="_blank" class="btn btn-download">Cyber.exe Mod Menu</a>
+            <a href="YOUR_N5_MENU_LINK" target="_blank" class="btn btn-download">N5 Menu Download</a>
+            <a href="YOUR_GORILLA_TAG_MODS_LINK" target="_blank" class="btn btn-download">Gorilla Tag Mods</a>
+        </div>
+    </div>
+
+    <script>
+        const subscribeBtn = document.getElementById('subscribeBtn');
+        const verifyBtn = document.getElementById('verifyBtn');
+        const gateBox = document.getElementById('gateBox');
+        const linksSection = document.getElementById('linksSection');
+        
+        let hasClickedSubscribe = false;
+
+        // Tracks if the user actually clicked the subscription step
+        subscribeBtn.addEventListener('click', () => {
+            hasClickedSubscribe = true;
+        });
+
+        // Verifies step completion and reveals menu
+        verifyBtn.addEventListener('click', () => {
+            if (hasClickedSubscribe) {
+                gateBox.style.display = 'none';
+                linksSection.style.display = 'block';
+            } else {
+                alert('Please complete Step 1 (Subscribe on YouTube) before checking verification status!');
+            }
+        });
+    </script>
+</body>
+</html>
 
